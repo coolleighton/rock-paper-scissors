@@ -32,6 +32,16 @@ p {
     padding: 0.5rem;
 }
 
+button {
+    color: white;
+    background-color: #003CCA;
+    border: 3px solid white;
+    font-family: 'VT323', monospace;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
 img {
     height: 150px;
     padding: 1rem;
@@ -39,9 +49,17 @@ img {
     margin: 2rem 1rem;
 }
 
+button:hover,
 img:hover {
     transform: scale(1.2);
     transition: 0.3s;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .selection {
@@ -56,4 +74,9 @@ img:hover {
 
 .score div {
     margin: 0 1rem;
+}
+
+.win-text {
+    margin-top: 30%;
+    margin-bottom: 1rem;
 }

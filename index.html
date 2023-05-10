@@ -11,27 +11,30 @@
     <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-    <h1>MAN VS COMPUTER</h1>
-    <p>Your machine has been infected by a malicious virus...</p>
-    <p>Unless you can beat it in a game of rock, paper scissors. First to 5 wins.</p>
-    <p>Do you have what it takes?</p>
-    <h2>Choose your weapon!</h2>
-    <div class="selection">
-        
-        <div id="rock" class="images"><img src="images/rock.png"></div>
-        <div id="paper" class="images"><img src="images/paper.png"></div>
-        <div id="scissors" class="images"><img src="images/scissors.png"></div>
-        
-    </div>
-    <div class="score">
-        <div>
-            <h3>You</h3>
-            <h3>0</h3>
+    <div id="container">
+        <h1>MAN VS COMPUTER</h1>
+        <p>Your machine has been infected by a malicious virus...</p>
+        <p>Unless you can beat it in a game of rock, paper scissors. First to 5 wins.</p>
+        <p>Do you have what it takes?</p>
+        <h2>Choose your weapon!</h2>
+        <div class="selection">
+            
+            <div id="rock" class="images"><img src="images/rock.png"></div>
+            <div id="paper" class="images"><img src="images/paper.png"></div>
+            <div id="scissors" class="images"><img src="images/scissors.png"></div>
+            
         </div>
-        <div>
-            <h3>Computer</h3>
-            <h3>0</h3>
+        <div class="score">
+            <div>
+                <h3>You</h3>
+                <h3 id="player-score">0</h3>
+            </div>
+            <div>
+                <h3>Computer</h3>
+                <h3 id="computer-score">0</h3>
+            </div>
         </div>
+        <p id="player-message"></p>
     </div>
 
     <script src="index.js"></script>

@@ -1,10 +1,16 @@
+// declaring variables and selecting HTML elements
+
+const container = document.querySelector("#container")
 const rockBtn = document.querySelector("#rock")
 const paperBtn = document.querySelector("#paper")
 const scissorsBtn = document.querySelector("#scissors")
+const playerMessage = document.querySelector("#player-message")
+const playerScoreText = document.querySelector("#player-score")
+const ComputerScoreText = document.querySelector("#computer-score")
+
 
 let playerScore = 0
 let computerScore = 0
-let computerSelection = getComputerChoice()
 
 // function to return rock, paper or scissors randomly //
 
@@ -26,99 +32,99 @@ function getComputerChoice() {
 
 }
 
-// function that plays a single round, will take two parameters. The player selection and computer selection. Will then return a string declaring the winner. Make it case insensitive //
+// function that will contain the logic for a single round and update the HTML with scores //
 
 function singleRound(playerSelection, computerSelection) {
-    
-    playerSelection = playerSelection.toLowerCase()
 
     if 
     (playerSelection === "rock" && computerSelection === "scissors")
     {
         playerScore ++
-        console.log("congratulations, you win!")
+        playerMessage.textContent = "Rock beats scissors, you win!"
     }
 
     if
     (playerSelection === "paper" && computerSelection === "rock")
     {
         playerScore ++
-        console.log("congratulations, you win!")
+        playerMessage.textContent = "Paper beats rock, you win!"
     }
 
     if
     (playerSelection === "scissors" && computerSelection === "paper")
     {
         playerScore ++
-        console.log("congratulations, you win!")
+        playerMessage.textContent = "Scissors beats paper, you win!"
     }
 
     if 
     (playerSelection === "paper" && computerSelection === "scissors")
     {
         computerScore ++
-        console.log("unfortunatly, you lose!")
+        playerMessage.textContent = "Scissors beats paper, you lose!"
     }
 
     if
     (playerSelection === "scissors" && computerSelection === "rock")
     {
         computerScore ++
-        console.log("unfortunatly, you lose!")
+        playerMessage.textContent = "Rock beats scissors, you lose!"
     }
 
     if
     (playerSelection === "rock" && computerSelection === "paper")
     {
         computerScore ++
-        console.log("unfortunatly, you lose!")
+        playerMessage.textContent = "Paper beats rock, you lose!"
     }
 
     if 
     (playerSelection === computerSelection)
     { 
-        console.log("tie")
+        playerMessage.textContent = "Tie game!"
     }
 
-    console.log("player score = " + playerScore + " computer score = " + computerScore)
+    ComputerScoreText.textContent = computerScore
+    playerScoreText.textContent = playerScore
     
 }
 
-// function that plays the game using the previous functions. It will play a 5 round game and report the winner at the end. Use prompt to get user input  //
+// ends game and displays a winner or loser screen when computer or player reaches 5 points //
 
-function game() {
-
-    let playerSelection = window.prompt("enter rock, paper or scissors")
-
-    singleRound(playerSelection, computerSelection)
-
-    playerSelection = window.prompt("enter rock, paper or scissors")
-
-    singleRound(playerSelection, computerSelection)
-
-    playerSelection = window.prompt("enter rock, paper or scissors")
-
-    singleRound(playerSelection, computerSelection)
-
-    playerSelection = window.prompt("enter rock, paper or scissors")
-
-    singleRound(playerSelection, computerSelection)
-
-    playerSelection = window.prompt("enter rock, paper or scissors")
-
-    singleRound(playerSelection, computerSelection)
-
-    if (playerScore === computerScore) {
-        console.log("You have tied. refresh the page to play again.")
+function endGame() {
+    if (playerScore === 5) {
+        container.innerHTML = `
+        
+            <h2 class="win-text">Congratulations, you win! Your computer is now free of viruses.</h2>
+            <button onClick="window.location.reload();">Play again?</button>
+        `
     }
 
-    if (playerScore > computerScore) {
-        console.log("You have Won. refresh the page to play again.")
-    }
-
-    if (playerScore < computerScore) {
-        console.log("You have lost. refresh the page to play again.")
+    if (computerScore === 5) {
+        container.innerHTML = `
+        
+            <h2 class="win-text">Unfortunatly, you lose! Your computer is still full of viruses.</h2>
+            <button onClick="window.location.reload();">Play again?</button>
+        `
     }
 }
 
-game()
+// event listeners that runs a single round and takes the users input on click. also checks for when a player reaches 5 points //
+
+rockBtn.addEventListener("click", function() {
+    singleRound("rock", getComputerChoice())
+    endGame()
+})
+
+paperBtn.addEventListener("click", function() {
+    singleRound("paper", getComputerChoice())
+    endGame()
+})
+
+scissorsBtn.addEventListener("click", function() {
+    singleRound("scissors", getComputerChoice())
+    endGame()
+})
+
+
+
